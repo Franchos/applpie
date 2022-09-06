@@ -9,19 +9,13 @@ class AuthController {
 
     const { data, error, status } = await AuthServices.login(email, password);
 
-    // !user
-    //   ? res.status(400).json({ msj: "Wrong email or password" })
-    //   : res.send(user);
-
     if (error) {
-      return res.status(status).json(data);
+      return res.status(status).json(data).end();
     }
 
-    // const payload = jwt.verify(data.token, "banana")
     req.user = data.user;
     res.cookie("token", data.token);
     res.status(status).send(data.user);
-    // res.status(status).send(data);
   }
 
   static async signup(req, res) {
@@ -30,8 +24,8 @@ class AuthController {
 
       const { error: errorValidate } = userSchema.validate({
         name,
-        password,
         email,
+        password,
       });
 
       if (errorValidate) res.status(400).send(errorValidate).end();
@@ -42,10 +36,18 @@ class AuthController {
         email,
       });
 
-      error ? res.status(400).json(data) : res.json(data);
+      if (error) {
+        res.status(400).json(data).end();
+      }
+      res.json(data);
     } catch (error) {
       return res.status(400).json({ error });
     }
+  }
+
+  static async logout(req, res, next) {
+    res.clearCookie("token");
+    next();
   }
 }
 
