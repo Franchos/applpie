@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { validateToken } = require("../config/token");
 
 const verifyToken = (req, res, next) => {
   const token = req.header("Authorization");
@@ -13,16 +14,13 @@ const verifyToken = (req, res, next) => {
 };
 
 const validateAuth = (req, res, next) => {
-  const token = req.cookie.token;
-  if (!token) return res.sendStatus(401);
-
-  const user = jwt.verify(token, process.env.SECRET);
-  console.log(user);
-  if (!user) return res.sendStatus(401);
-
-  req.user = user;
-
-  next();
+  if (!req.cookies.token) return res.sendStatus(401);
+  const token = req.cookies.token;
+  const { payload } = validateToken(token);
+  if (payload) {
+    req.user = payload;
+    return next();
+  }
 };
 
 module.exports = { verifyToken, validateAuth };
