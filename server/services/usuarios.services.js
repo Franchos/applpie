@@ -9,15 +9,13 @@ class UserServices {
     if (validacion) {
       return { data: "This email is already in use.", error: true };
     }
-    if (!validacion) {
-      const usuario = new User({
-        email: body.email,
-        name: body.name,
-        password: bcrypt.hashSync(body.password, 10),
-      });
-      const result = await usuario.save();
-      return { data: result, error: false };
-    }
+    const usuario = new User({
+      email: body.email,
+      name: body.name,
+      password: bcrypt.hashSync(body.password, 10),
+    });
+    const result = await usuario.save();
+    return { data: result, error: false };
   }
 
   static async activeUsers() {
