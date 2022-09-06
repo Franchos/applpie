@@ -1,12 +1,12 @@
 const router = require("express").Router();
 
 const UserController = require("../controllers/usuarios.controller");
-const { verifyToken } = require("../middlewares/auth");
+const { validateAuth } = require("../middlewares/auth");
 
-router.get("/", verifyToken, UserController.activeUsers);
+router.get("/", validateAuth, UserController.activeUsers);
 
-router.put("/:_id", verifyToken, UserController.putUser);
+router.put("/:_id", validateAuth, UserController.putUser);
 
-router.delete("/:_id", verifyToken, UserController.deleteUser);
+router.delete("/:_id", validateAuth, UserController.deleteUser);
 
 module.exports = router;
