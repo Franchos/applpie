@@ -1,47 +1,33 @@
-import { Button, TextField } from "@mui/material";
+import { Login } from "../Header/login";
+import MenuAppBar from "../Header";
+import { useEffect } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
-
-// import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../state/user";
+import MovieCard from "../../common/Card";
+import MoviesGrid from "../../components/Grid";
+import TrendingCarousel from "../../components/Carousel";
+import { Box } from "@mui/material";
 
 function App() {
-  const [text, setText] = useState("");
-  const [result, setResult] = useState("");
-  // useEffect usarlo despues con axios para pedidos del back...
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
-  const handleText = (e) => {
-    const result = e.target.value;
-    return setResult(result);
-  };
+  useEffect(() => {
+    axios.get("/auth/me").then(({ data }) => dispatch(getUser(data)));
+    console.log(user);
+  }, [dispatch]);
 
-  const handleSubmit = () => setText(result);
-  console.log(text);
+  // if (!user._id) return <div>...cargando</div>;
+
   return (
-    <div>
-      <div>
-        <TextField variant="filled" onChange={(e) => handleText(e)} />
-        <Button
-          variant="contained"
-          color="warning"
-          size="large"
-          onClick={handleSubmit}
-        >
-          Submit
-        </Button>
-      </div>
-      <div>
-        <TextField variant="filled"></TextField>
-        <Button variant="contained" color="primary" size="large">
-          Submit
-        </Button>
-      </div>
-      <div>
-        <TextField variant="filled"></TextField>
-        <Button variant="contained" color="primary" size="large">
-          Submit
-        </Button>
-      </div>
-    </div>
+    <>
+      <div>{user.name}</div>
+      <MenuAppBar />
+      <Box>
+        <TrendingCarousel />
+      </Box>
+    </>
   );
 }
 
