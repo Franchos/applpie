@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { generateToken } = require("../config/token");
 
 class AuthServices {
   static async login(email, password) {
@@ -10,16 +11,8 @@ class AuthServices {
     if (user) {
       const validatePassword = bcrypt.compareSync(password, user.password);
       if (validatePassword) {
-        const token = jwt.sign(
-          {
-            _id: user._id,
-            name: user.name,
-            password: user.password,
-            email: user.email,
-          },
-          "banana",
-          { expiresIn: "7d" }
-        );
+        const token = generateToken(user);
+
         return { data: { token, user }, error: false, status: 200 };
       }
       return { data: "Unauthorized", error: true, status: 401 };
