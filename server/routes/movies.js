@@ -6,7 +6,7 @@ const MoviesController = require("../controllers/movies.controllers");
 
 router.get("/:_id", MoviesController.getSingleMedia);
 
-router.get("/", MoviesController.getTopMovies);
+router.get("/top_rated", MoviesController.getTopMovies);
 
 router.get("/:_id/similar", MoviesController.getSimilarMovies);
 
