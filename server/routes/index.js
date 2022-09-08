@@ -4,6 +4,7 @@ const users = require("./users");
 const auth = require("./auth");
 const movies = require("./movies");
 const trending = require("./trending");
+const search = require("./search");
 
 router.use("/users", users);
 //router usuario
@@ -14,6 +15,7 @@ router.use("/auth", auth);
 //loguear al usuario
 //register/creacion del usuario
 //desloguearse ----> me falta
+router.use("/search", search);
 router.use("/movies", movies);
 router.use("/trending", trending);
 //router de multimedia
