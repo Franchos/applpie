@@ -5,6 +5,7 @@ const auth = require("./auth");
 const movies = require("./movies");
 const trending = require("./trending");
 const search = require("./search");
+const movie = require("./movie");
 
 router.use("/users", users);
 //router usuario
@@ -17,6 +18,7 @@ router.use("/auth", auth);
 //desloguearse ----> me falta
 router.use("/search", search);
 router.use("/movies", movies);
+router.use("/movie", movie);
 router.use("/trending", trending);
 //router de multimedia
 //solo consumir info de la API
