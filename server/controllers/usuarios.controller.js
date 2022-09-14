@@ -58,5 +58,43 @@ class UserController {
       return res.status(400).send(error);
     }
   }
+
+  static async setFav(req, res) {
+    try {
+      const { user_id } = req.body;
+      const { movie } = req.body;
+
+      const { data, error } = await UserServices.setFav(user_id, movie);
+
+      !error ? res.status(200).send(data) : res.status(400).send(data);
+    } catch (error) {
+      return res.status(400).send(error);
+    }
+  }
+
+  // static async getFavs(req, res) {
+  //   try {
+  //     const { user_id } = req.params;
+
+  //     const { data, error } = await UserServices.getFavs(user_id);
+
+  //     !error ? res.status(200).send(data) : res.status(400).send(data);
+  //   } catch {}
+  // }
+
+  static async removeFav(req, res) {
+    try {
+      const { movie_id } = req.body;
+      const { user_id } = req.params;
+
+      // console.log(req.body);
+
+      const { data, error } = await UserServices.removeFav(user_id, movie_id);
+
+      !error ? res.status(200).send(data) : res.status(400).send(data);
+    } catch (error) {
+      return res.status(400).send(error);
+    }
+  }
 }
 module.exports = UserController;
