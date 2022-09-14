@@ -22,7 +22,7 @@ export const GenresCarousel = () => {
         }}
       >
         <Typography variant="h3" color="white" sx={{ padding: 0 }}>
-          CHOOSE A GENRE
+          CHOOSE A CATEGORY
         </Typography>
       </Box>
       <Slider {...GenresSettings}>
