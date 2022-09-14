@@ -66,7 +66,7 @@ export const Register = () => {
         name,
         password,
       })
-      .then(({ data }) => dispatch(registerUser({ email, name, password })))
+      .then(() => dispatch(registerUser({ email, name, password })))
       .then(() => navigate("/"));
   };
 
@@ -93,7 +93,7 @@ export const Register = () => {
           <FormControl
             style={styles.FormControlStyle}
             variant="standard"
-            required="true"
+            required
           >
             <InputLabel style={styles.InputStyle} shrink>
               EMAIL
@@ -119,7 +119,7 @@ export const Register = () => {
           <FormControl
             style={styles.FormControlStyle}
             variant="standard"
-            required="true"
+            required
           >
             <InputLabel style={styles.InputStyle} shrink>
               PASSWORD

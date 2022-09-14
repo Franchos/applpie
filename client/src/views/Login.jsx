@@ -93,9 +93,13 @@ export const Login = () => {
           Glad to see u!
         </Typography>
         <Box sx={{ padding: "1vh" }}>
-          <FormControl style={styles.FormControlStyle} variant="standard">
+          <FormControl
+            style={styles.FormControlStyle}
+            variant="standard"
+            required
+          >
             <InputLabel style={styles.InputStyle} shrink>
-              EMAIL*
+              EMAIL
             </InputLabel>
             <BootstrapInput
               id="bootstrap-input"
@@ -106,7 +110,7 @@ export const Login = () => {
         <Box>
           <FormControl variant="standard" required>
             <InputLabel style={styles.InputStyle} shrink>
-              PASSWORD*
+              PASSWORD
             </InputLabel>
             <BootstrapInput
               id="bootstrap-input"
@@ -119,8 +123,6 @@ export const Login = () => {
             style={styles.submitStyle}
             onClick={() => {
               handleSubmit();
-              //cuando hacemos click quiero que verifique si el usuario esta logeado, si no se queda en la misma pagina...
-              // navigate("/");
             }}
           >
             SUBMIT
