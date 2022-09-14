@@ -36,10 +36,11 @@ class AuthController {
         email,
       });
 
-      if (error) {
-        res.status(400).json(data).end();
-      }
-      res.json(data);
+      if (error) return res.status(400).json(data).end();
+
+      req.user = data.result;
+      res.cookie("token", data.token);
+      return res.status(201).send(data.result);
     } catch (error) {
       return res.status(400).json({ error });
     }
