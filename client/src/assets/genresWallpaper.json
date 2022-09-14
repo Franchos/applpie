@@ -1,0 +1,60 @@
+{
+  "genres": [
+    {
+      "id": 35,
+      "name": "Funny",
+      "image": "https://wallpaperaccess.com/full/240618.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Fantasy",
+      "image": "https://wallpapercave.com/wp/wp6486947.jpg"
+    },
+    {
+      "id": 80,
+      "name": "Crime",
+      "image": "https://wallpaperaccess.com/full/379696.jpg"
+    },
+    {
+      "id": 10751,
+      "name": "Family",
+      "image": "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/blogs/2147488449/images/ibVy1CyrRdKPKE4MBWij_Happy_Family_splashing_on_the_Beach_at_sunset_1280_by_720.jpg"
+    },
+    {
+      "id": 37,
+      "name": "Western",
+      "image": "https://wallpaperaccess.com/full/141102.jpg"
+    },
+    {
+      "id": 27,
+      "name": "Scary",
+      "image": "https://wallpaperaccess.com/full/1280417.jpg"
+    },
+    {
+      "id": 28,
+      "name": "Action",
+      "image": "https://wallpapercave.com/wp/wp2449221.jpg"
+    },
+    {
+      "id": 99,
+      "name": "Documentary",
+      "image": "https://wallpaperaccess.com/full/1660643.jpg"
+    },
+    {
+      "id": 10749,
+      "name": "Corny",
+      "image": "https://wallpaperaccess.com/full/2727051.jpg"
+    },
+    {
+      "id": 878,
+      "name": "Science Fiction",
+      "image": "https://wallpaperaccess.com/full/1866585.jpg"
+    },
+
+    {
+      "id": 10752,
+      "name": "War",
+      "image": "https://images3.alphacoders.com/755/75559.jpg"
+    }
+  ]
+}
