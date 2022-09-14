@@ -25,10 +25,68 @@ class MoviesController {
   }
   //1 movie similar, maybe change it for a recommendation...
   static async getSimilarMovies(req, res) {
+    // "similar",
     try {
       const { _id } = req.params;
-      const { data, error } = await MoviesServices.getSimilarMovies(_id);
+      const { data, error } = await MoviesServices.getSimilarThings(
+        "similar",
+        _id
+      );
 
+      error ? res.status(404).send(data) : res.json(data);
+    } catch (error) {
+      res.status(404).send(error);
+    }
+  }
+
+  static async getImages(req, res) {
+    try {
+      const { _id } = req.params;
+      const { data, error } = await MoviesServices.getSimilarThings(
+        "images",
+        _id
+      );
+      error ? res.status(404).send(data) : res.json(data);
+    } catch (error) {
+      res.status(404).send(error);
+    }
+  }
+
+  static async getVideos(req, res) {
+    try {
+      const { _id } = req.params;
+      const { data, error } = await MoviesServices.getSimilarThings(
+        "videos",
+        _id
+      );
+      error ? res.status(404).send(data) : res.json(data);
+    } catch (error) {
+      res.status(404).send(error);
+    }
+  }
+
+  static async getPopularMovies(req, res) {
+    try {
+      const { data, error } = await MoviesServices.getPopularMovies();
+      error ? res.status(404).send(data) : res.json(data);
+    } catch (error) {
+      res.status(404).send(error);
+    }
+  }
+
+  static async getPages(req, res) {
+    try {
+      const { page } = req.params;
+      const { data, error } = await MoviesServices.getPages(page);
+      error ? res.status(404).send(data) : res.json(data);
+    } catch (error) {
+      res.status(404).send(error);
+    }
+  }
+
+  static async getUpcoming(req, res) {
+    try {
+      const { data, error } = await MoviesServices.getUpcoming();
       error ? res.status(404).send(data) : res.json(data);
     } catch (error) {
       res.status(404).send(error);
