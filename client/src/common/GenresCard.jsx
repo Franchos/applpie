@@ -1,23 +1,15 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const styles = {
-  typographyStyle: {
-    position: "absolute",
-    fontWeight: "600",
-    top: 220,
-    left: "50%",
-    transform: "translateX(-50%)",
-  },
-};
+export default function GenresCard({ movie: category }) {
+  const navigate = useNavigate();
 
-export default function GenresCard({ movie }) {
   const variantFont =
-    movie.name === "War" || movie.name === "Scary" ? "white" : "black";
+    category.name === "War" || category.name === "Scary" ? "white" : "black";
 
   return (
     <Card
@@ -26,12 +18,12 @@ export default function GenresCard({ movie }) {
       backgroundColor="primary.main"
       sx={{ borderRadius: "10px", margin: "15px" }}
     >
-      <CardActionArea>
+      <CardActionArea onClick={() => navigate(`/category/${category.name}`)}>
         <CardMedia
           component="img"
           height="500"
           width="400"
-          image={movie.image}
+          image={category.image}
         />
         <Typography
           variant="h5"
@@ -44,7 +36,7 @@ export default function GenresCard({ movie }) {
             transform: "translateX(-50%)",
           }}
         >
-          {movie.name}
+          {category.name}
         </Typography>
       </CardActionArea>
     </Card>
